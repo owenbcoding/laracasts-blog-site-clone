@@ -16,7 +16,7 @@
             </div>
         </article>
         @endforeach --}}
-    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6"><a href=""></a>
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6"><a href="/"></a>
         @if ($posts->count())
             <x-posts-grid :posts="$posts" />
         @else 
