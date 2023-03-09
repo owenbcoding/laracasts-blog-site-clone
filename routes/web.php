@@ -3,7 +3,6 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-// use App\Models\Categories;
 use Symfony\Component\Yaml\Yaml;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -20,23 +19,8 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
-    // Find a post by its slug and pass it to a view called "post"
-    // Better to use collections
-    return view('posts', [
-        'posts' => Post::latest()->get(),
-        'categories' => Category::all()
-     ]);
-});
-
-Route::get('/posts/{post:slug}', function (Post $post) {
-
-    // $post = Post::findOrFail($slug);
-
-    return view('post', [
-        'post' => $post 
-    ]);
-});
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('categories/{category:slug}', function (Category $category) {
     return view('posts', [
@@ -44,7 +28,7 @@ Route::get('categories/{category:slug}', function (Category $category) {
         'currentCategory' => $category,
         'categories' => Category::all()
      ]);
-});
+})->name('category');
 
 
 Route::get('authors/{author:username}', function (User $author) {
