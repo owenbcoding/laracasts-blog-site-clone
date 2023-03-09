@@ -1,18 +1,6 @@
 @extends('components.layout')
 
 @section('content')
-    {{-- <article>
-        <h1 class="font-bold text-3xl mb-10 mt-10">{{ $post->title }}</h1>
-        <p class="font-bold">
-            By <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
-        </p>
-        <div>
-            {!! $post->body !!}
-        </div>
-    </article>
-    <div class="mt-5">
-        <a class="font-bold" href="/">Go Back</a>
-    </div> --}}
 
     <section class="px-6 py-8">
 
@@ -52,9 +40,6 @@
 
                         <div class="space-x-2">
                             <x-category-button :category="$post->category" />
-                                {{-- <a href="/categories/{{ $post->category->slug }}"
-                                    class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                                    style="font-size: 10px">{{ $post->category->name }}</a> --}}
                         </div>
                     </div>
 
@@ -63,7 +48,7 @@
                     </h1>
 
                     <div class="space-y-4 lg:text-lg leading-loose">
-                        {{ $post->body }}
+                        {!! $post->body !!}
                     </div>
                 </div>
             </article>
