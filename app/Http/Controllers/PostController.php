@@ -11,14 +11,19 @@ class PostController extends Controller
     public function index()
     {
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request(['search']))->get(),
+            'posts' => Post::latest()->filter(
+                request(['search', 'category', 'author'])
+                )->paginate(6),
             ]);
+        // return Post::latest()->filter(
+        //      request(['search', 'category', 'author']),
+        //             )->paginate();
     }
 
-    public function show(Post $post)
-    {
-        return view('posts.show', [
-            'post' => $post,
-        ]);
-    }
+    // public function show(Post $post)
+    // {
+    //     return view('posts.show', [
+    //         'post' => $post,
+    //     ]);
+    // }
 }
