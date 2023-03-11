@@ -17,15 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::truncate();
-        // Post::truncate();
-        // Category::truncate();
 
         $user = User::factory()->create([
             'name' => 'john Doe'
         ]);
 
-        Post::factory(5)->create([
+        Post::factory(30)->create([
             'user_id' => $user->id,
             'published_at' => now()
         ]);
